@@ -104,12 +104,15 @@ class ELSNode {
             context.save()
             context.scale(1 - 2 * j, 1)
             context.beginPath()
-            context.moveTo(gap/2 * sc, 0)
-            context.lineTo(gap/2, 0)
+            context.moveTo(gap/3 * sc, 0)
+            context.lineTo(gap/3, 0)
             context.stroke()
             context.restore()
         }
         context.restore()
+        if (this.next) {
+            this.next.draw(context)
+        }
     }
 
     update(cb : Function) {
