@@ -137,12 +137,11 @@ class ELSNode {
 }
 
 class EndLineStep {
-    root : ELSNode = new ELSNode(0)
-    curr : ELSNode = this.root
+    curr : ELSNode = new ELSNode(0)
     dir : number = 1
 
     draw(ctx : CanvasRenderingContext2D) {
-        this.root.draw(ctx)
+        this.curr.draw(ctx)
     }
 
     update(cb : Function) {
