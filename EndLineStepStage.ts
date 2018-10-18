@@ -151,3 +151,25 @@ class EndLineStep {
         this.curr.startUpdating(cb)
     }
 }
+
+class Renderer {
+    els : EndLineStep = new EndLineStep()
+    animator : Animator = new Animator()
+    render(context : CanvasRenderingContext2D) {
+        context.fillStyle = '#BDBDBD'
+        context.fillRect(0, 0, w, h)
+        this.els.draw(context)
+    }
+
+    handleTap(cb : Function) {
+        this.els.startUpdating(() => {
+            this.animator.start(() => {
+                cb()
+                this.els.update(() => {
+                    this.animator.stop()
+                    cb()
+                })
+            })
+        })
+    }
+}
